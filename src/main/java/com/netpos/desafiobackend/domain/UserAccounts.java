@@ -10,10 +10,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class UserAccounts implements Serializable {
-
 	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -21,6 +23,7 @@ public class UserAccounts implements Serializable {
 	private String senha;
 	private String nome;
 	
+    @JsonManagedReference
 	@ManyToMany(mappedBy = "usuarios")
 	private List<Produto> produtos = new ArrayList<>();
 
