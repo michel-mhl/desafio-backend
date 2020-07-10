@@ -21,4 +21,9 @@ public class UserAccountsService {
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + UserAccounts.class.getName()));
 	}
 
+	public UserAccounts insert(UserAccounts obj) {
+		obj.setId(null);
+		return repo.save(obj);
+	}
+
 }
