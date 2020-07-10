@@ -19,7 +19,7 @@ public class UserAccountsResources {
 	
 	@Autowired
 	private UserAccountsService service;
-	
+		
 	@RequestMapping(value="/{id}",method = RequestMethod.GET)
 	public ResponseEntity<?> find(@PathVariable Integer id) {
 		UserAccounts user = service.buscar(id);

@@ -7,16 +7,18 @@ import org.springframework.stereotype.Service;
 
 import com.netpos.desafiobackend.domain.UserAccounts;
 import com.netpos.desafiobackend.repositories.UserAccontsRepository;
+import com.netpos.desafiobackend.services.exceptions.*;
 
 @Service
 public class UserAccountsService {
-	
-@Autowired
+
+	@Autowired
 	private UserAccontsRepository repo;
 
 	public UserAccounts buscar(Integer id) {
-		Optional<UserAccounts> user = repo.findById(id);
-		return user.orElse(null);
+		Optional<UserAccounts> obj = repo.findById(id);
+		return obj.orElseThrow(() -> new ObjectNotFoundException(
+				"Objeto não encontrado! Id: " + id + ", Tipo: " + UserAccounts.class.getName()));
 	}
 
 }
